@@ -18,6 +18,7 @@ private:
   char **currentPopulationGrid; //the 2d array representing the grid that stores the current generation
   int numberOfCellsAliveInNewGrid; //stores the amount of cells left alive in the new generation grid for determining population stability
   int numberOfCellsAliveInPreviousGrid; //stores the amount of cells alive in the previous generation grid for determining population stablility
+  int counter; //the number of times a new generation is made, used to stop the simulation if the simulation is going on for more than 1000 iterations
 
   int numberOfCellsThatDiedInPreviousGrid; //stores the amount of cells that died in the previous generation grid, for determining population stability later
   int numberOfCellsBornInPreviousGrid; //stores the amount of cells that were born in the previous generation grid for determining population stability later

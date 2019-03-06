@@ -163,6 +163,7 @@ void SimulationManager::runSimulation() {
 
   consoleOutputManager.outputGenerationToConsole(currentPopulationGrid, generationNumber, numberOfRows, numberOfColumns);
   timesWherePopulationWasStable = 0;
+  counter = 0;
 
   if (simulationVisualizerMode == 2) {
 
@@ -172,8 +173,9 @@ void SimulationManager::runSimulation() {
 
   }
 
-  while (true) { //run the simulation until the population has stabalized or everything has died
+  while (true) { //run the simulation until the population has stabalized or everything has died or the number of iterations is too high
 
+    counter++;
     calculateNeighborsUsingModeUserHasSelected();
 
     if (simulationVisualizerMode == 0) {
@@ -200,7 +202,7 @@ void SimulationManager::runSimulation() {
 
     if (checkIfSimuluationShouldEnd()) {
 
-      promptUserToPressEnter("The world has either become empty or has stabalized. Press ENTER to exit the program");
+      promptUserToPressEnter("The world has either become empty or has stabalized or the simulation has gone on for too long. Press ENTER to exit the program");
 
       break; //break out of the while loop so that the simulation can end
 
@@ -336,6 +338,13 @@ bool SimulationManager::checkForStabilityUsingCorrectBoundaryModeSettings(int ce
 bool SimulationManager::checkIfSimuluationShouldEnd() {
 
   numberOfCellsAliveInNewGrid = determineAmountOfCellsAliveInCurrentGrid();
+
+  if (counter >= 1000) {
+
+    //this is the 1000th iteration, the simulation has gone on for too long
+    return true;
+
+  }
 
   if ((numberOfCellsAliveInNewGrid <= 0) && (generationNumber != 0)) {
 
