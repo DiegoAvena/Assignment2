@@ -1,5 +1,9 @@
 Game Of life simulator
 
+![GameOfLife](https://user-images.githubusercontent.com/43594702/119759860-d46bc280-be5d-11eb-9484-1954a0b4e0a9.png)
+
+[See it in action!](https://www.youtube.com/watch?v=9WaMRaPWijA)
+
 In order to implement some parts of this project, I referenced the following:
 
 1.)http://www.cplusplus.com/reference/ctime/ in order to learn how the clock method works so that I can create 
